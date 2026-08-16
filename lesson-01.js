@@ -21,3 +21,5 @@
 //
 // STRETCH, step 9: describe your page as a system. Name the client, name the
 // server, and state what the request asked for and what the response carried.
+// client is my javascript running on the and once it want to
+//  fetch the array of artist from json, json file is acting as a server serving the response requested in the fetch call.
