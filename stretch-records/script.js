@@ -35,14 +35,20 @@ function renderCards(list) {
     cardArea.append(buildCard(artist));
   }
 }
+const status = document.querySelector(".status");
+status.textContent = "Loading artists....";
+setTimeout(() => {
+  fetch("json/artist.json")
+    .then((response) => response.json())
+    .then((artists) => {
+      artists = artists; // Set global variable
+      renderCards(artists);
+      status.textContent = "";
+    })
+    .catch((err) => console.error("Failed to load artists.json:", err));
+}, 1000);
 
-fetch("json/artist.json")
-  .then((response) => response.json())
-  .then((artists) => {
-    artists = artists; // Set global variable
-    renderCards(artists);
-  })
-  .catch((err) => console.error("Failed to load artists.json:", err));
+//statusBox.textContent = "Loading artists...";
 
 // Shuffle: pick a random artist and feature them.
 const shuffleButton = document.querySelector(".shuffle");
@@ -53,6 +59,15 @@ shuffleButton.addEventListener("click", () => {
   document.querySelector(".featured").textContent =
     `Featured today: ${pick.name}`;
 });
+// freeze the screen for 5 sec
+// document.querySelector("#freeze").addEventListener("click", () => {
+//   const until = Date.now() + 5000;
+//   while (Date.now() < until) {
+//     setTimeout(() => console.log("encore"), 5000);
+//   }
+//   console.log("done");
+//   clearTimeout();
+// });
 
 // The suggestion form: an empty submission does nothing, because an empty
 // string is falsy.
