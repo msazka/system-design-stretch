@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Pinkfong",
+    "genre": "Children's music",
+    "total": "11:31",
+    "photo": "images/pinkfong.jpeg"
+  },
+  {
+    "name": "Adriano Celentano",
+    "genre": "Italian pop",
+    "total": "20:52",
+    "photo": "images/adriano-celentano.jpg"
+  },
+  {
+    "name": "Asake",
+    "genre": "Afrobeats",
+    "total": "14:08",
+    "photo": "images/asake.jpg"
+  },
+  {
+    "name": "Miyagi and Andy Panda",
+    "genre": "Hip-hop",
+    "total": "16:21",
+    "photo": "images/miyagi-and-andy-panda.jpg"
+  },
+  {
+    "name": "Johnny Cash",
+    "genre": "Country",
+    "total": "15:40",
+    "photo": "images/johnny-cash.jpg"
+  },
+  {
+    "name": "Taylor swift",
+    "genre": "pop",
+    "total": "23:12",
+    "photo": "images/talor.png"
+  },
+  {
+    "name": "Atif Aslam",
+    "genre": "Pop",
+    "total": "11:31",
+    "photo": "images/atif-aslam.png"
+  }
+]
