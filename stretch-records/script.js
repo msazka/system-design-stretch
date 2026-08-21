@@ -35,20 +35,34 @@ function renderCards(list) {
     cardArea.append(buildCard(artist));
   }
 }
+
 const status = document.querySelector(".status");
 status.textContent = "Loading artists....";
-setTimeout(() => {
-  fetch("json/artist.json")
-    .then((response) => response.json())
-    .then((artists) => {
-      artists = artists; // Set global variable
-      renderCards(artists);
-      status.textContent = "";
-    })
-    .catch((err) => console.error("Failed to load artists.json:", err));
-}, 1000);
 
-//statusBox.textContent = "Loading artists...";
+async function loadArtists() {
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await fetch("json/artist.json");
+    if (!response.ok) {
+      throw new Error("Artist data could not be loaded.");
+    }
+
+    const artists = await response.json();
+    renderCards(artists);
+
+    const labelResponse = await fetch("label.json");
+    const data = await labelResponse.json();
+    console.log(data.label.city);
+  } catch (err) {
+    console.error("Failed to load artists.json:", err);
+    status.textContent =
+      "Unable to load artists right now. Please try again later.";
+  } finally {
+    status.textContent = "";
+  }
+}
+
+loadArtists();
 
 // Shuffle: pick a random artist and feature them.
 const shuffleButton = document.querySelector(".shuffle");
